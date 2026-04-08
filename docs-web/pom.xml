@@ -143,6 +143,37 @@
         <directory>src/main/resources</directory>
       </resource>
     </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>aggregate-reactor-sites</id>
+            <phase>site</phase>
+            <configuration>
+              <target>
+                <mkdir dir="${project.basedir}/../target/site/docs-core" />
+                <mkdir dir="${project.basedir}/../target/site/docs-web-common" />
+                <mkdir dir="${project.basedir}/../target/site/docs-web" />
+                <copy todir="${project.basedir}/../target/site/docs-core" overwrite="true">
+                  <fileset dir="${project.basedir}/../docs-core/target/site" />
+                </copy>
+                <copy todir="${project.basedir}/../target/site/docs-web-common" overwrite="true">
+                  <fileset dir="${project.basedir}/../docs-web-common/target/site" />
+                </copy>
+                <copy todir="${project.basedir}/../target/site/docs-web" overwrite="true">
+                  <fileset dir="${project.basedir}/target/site" />
+                </copy>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 
   <profiles>
