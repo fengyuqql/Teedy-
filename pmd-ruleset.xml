@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="Teedy Practice Metrics Ruleset"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.github.io/pmd-6.0.0/ruleset_xml_schema.xsd">
+    <description>
+        Practice 7 custom PMD rules for metrics discussed in class:
+        LoC (NcssCount), CC (CyclomaticComplexity), WMC-related (TooManyMethods),
+        CBO (CouplingBetweenObjects), and LCOM-related cohesion checks (GodClass/TCC).
+    </description>
+
+    <!-- LoC -->
+    <rule ref="category/java/design.xml/NcssCount"/>
+
+    <!-- Cyclomatic Complexity -->
+    <rule ref="category/java/design.xml/CyclomaticComplexity"/>
+
+    <!-- Weighted Methods per Class (closest PMD proxy) -->
+    <rule ref="category/java/design.xml/TooManyMethods"/>
+
+    <!-- Coupling Between Objects -->
+    <rule ref="category/java/design.xml/CouplingBetweenObjects"/>
+
+    <!-- Cohesion-related smell (uses TCC, inverse of LCOM) -->
+    <rule ref="category/java/design.xml/GodClass"/>
+</ruleset>
