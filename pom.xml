@@ -64,6 +64,7 @@
     <org.apache.maven.plugins.maven-project-info-reports-plugin.version>3.5.0</org.apache.maven.plugins.maven-project-info-reports-plugin.version>
     <org.apache.maven.plugins.maven-pmd-plugin.version>3.26.0</org.apache.maven.plugins.maven-pmd-plugin.version>
     <org.eclipse.jetty.jetty-maven-plugin.version>11.0.20</org.eclipse.jetty.jetty-maven-plugin.version>
+    <org.jacoco.jacoco-maven-plugin.version>0.8.9</org.jacoco.jacoco-maven-plugin.version>
   </properties>
 
   <scm>
@@ -148,6 +149,27 @@
         <artifactId>maven-site-plugin</artifactId>
         <version>${org.apache.maven.plugins.maven-site-plugin.version}</version>
       </plugin>
+
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${org.jacoco.jacoco-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -172,6 +194,21 @@
           </rulesets>
           <linkXRef>false</linkXRef>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${org.jacoco.jacoco-maven-plugin.version}</version>
+        <reportSets>
+          <execution>
+            <id>aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>report-aggregate</report>
+            </reports>
+          </execution>
+        </reportSets>
       </plugin>
     </plugins>
   </reporting>
