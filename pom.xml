@@ -201,13 +201,13 @@
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>${org.jacoco.jacoco-maven-plugin.version}</version>
         <reportSets>
-          <execution>
+          <reportSet>
             <id>aggregate</id>
             <inherited>false</inherited>
             <reports>
               <report>report-aggregate</report>
             </reports>
-          </execution>
+          </reportSet>
         </reportSets>
       </plugin>
     </plugins>
